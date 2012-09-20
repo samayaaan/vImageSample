@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "UIImage+Blurring.h"
+#import "UIImage+Filtering.h"
+#import "UIImage+Masking.h"
+#import "UIImage+Enhancing.h"
 #import <CoreImage/CoreImage.h>
 
 @interface ViewController ()
@@ -37,37 +41,19 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)originalAction:(id)sender {
+    filterImage.image = [UIImage imageNamed:@"sample_10s.jpg"];
+}
+
 - (IBAction)monoAction:(id)sender {
-    // CIColorMonochrome
-    CIImage *monoCIImage = [[CIImage alloc] initWithImage:[UIImage imageNamed:@"sample_10s.jpg"]]; //ファイル名
-    CIFilter *monoCIFilter = [CIFilter filterWithName:@"CIColorMonochrome" //フィルター名
-                                        keysAndValues:kCIInputImageKey, monoCIImage,
-                              @"inputColor", [CIColor colorWithRed:0.75 green:0.75 blue:0.75], //パラメータ
-                              @"inputIntensity", [NSNumber numberWithFloat:1.0], //パラメータ
-                              nil
-                              ];
-    CIContext *monoCIContext = [CIContext contextWithOptions:nil];
-    CGImageRef monoCGImage = [monoCIContext createCGImage:[monoCIFilter outputImage] fromRect:[[monoCIFilter outputImage] extent]];
-    UIImage *monoUIImage = [UIImage imageWithCGImage:monoCGImage scale:1.0f orientation:UIImageOrientationUp];
-    CGImageRelease(monoCGImage);
     
-    filterImage.image = monoUIImage;
+    filterImage.image = [filterImage.image grayscale];
+//    filterImage.image = [filterImage.image autoEnhance];
+//    filterImage.image = [filterImage.image maskWithImage:[UIImage imageNamed:@"sample_10s.jpg"]];
     
-    // TODO mIto 再度押下したら元画像に戻ると良い
-    
-    
-    
-    // CIGaussianBlur blur系はiOS5はサポートしていない模様
-    // http://stackoverflow.com/questions/8528726/does-ios-5-support-blur-coreimage-fiters
-    CIImage *blurCIImage = [[CIImage alloc] initWithImage:[UIImage imageNamed:@"sample_10s.jpg"]];
-    
-    CIFilter *blurCIFilter = [CIFilter filterWithName:@"CIMedianFilter" keysAndValues:kCIInputImageKey, blurCIImage,
-                              @"inputRadius", [NSNumber numberWithFloat:1.0], nil];
-    
-    
-    CIContext *blurCIContext = [CIContext contextWithOptions:nil];
-    CGImageRef blurCGImage = [blurCIContext createCGImage:[blurCIFilter outputImage] fromRect:[[blurCIFilter outputImage] extent]];
-    UIImage *blurUIImage = [UIImage imageWithCGImage:blurCGImage scale:1.0f orientation:UIImageOrientationUp];
-    CGImageRelease(blurCGImage);
+}
+
+- (IBAction)blurAction:(id)sender {
+    filterImage.image = [filterImage.image gaussianBlurWithBias:0];
 }
 @end

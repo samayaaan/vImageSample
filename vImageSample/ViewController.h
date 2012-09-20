@@ -11,6 +11,9 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *filterImage;
+
+- (IBAction)originalAction:(id)sender;
 - (IBAction)monoAction:(id)sender;
+- (IBAction)blurAction:(id)sender;
 
 @end
