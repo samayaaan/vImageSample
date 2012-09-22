@@ -112,7 +112,7 @@
 
 - (IBAction)blur2Action:(id)sender {
     
-    filterImage.image = [filterImage.image blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:1 xp:20 yp:20];
+    filterImage.image = [filterImage.image blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:1 xp:60 yp:100];
 }
 
 
