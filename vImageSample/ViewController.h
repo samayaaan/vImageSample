@@ -12,8 +12,13 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *filterImage;
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+
 - (IBAction)originalAction:(id)sender;
 - (IBAction)monoAction:(id)sender;
 - (IBAction)blurAction:(id)sender;
+- (IBAction)mosaicAction:(id)sender;
+- (IBAction)blur2Action:(id)sender;
 
 @end

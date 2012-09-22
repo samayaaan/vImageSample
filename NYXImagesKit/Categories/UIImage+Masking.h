@@ -14,5 +14,6 @@
 @interface UIImage (NYX_Masking)
 
 -(UIImage*)maskWithImage:(UIImage*)mask;
+-(UIImage*)maskWithImage2:(UIImage*)mask;
 
 @end

@@ -31,6 +31,9 @@
 		46248772160B2F540059DA4B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46248771160B2F540059DA4B /* AssetsLibrary.framework */; };
 		46248774160B2F610059DA4B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46248773160B2F610059DA4B /* ImageIO.framework */; };
 		46248778160B2F7C0059DA4B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46248777160B2F7C0059DA4B /* MobileCoreServices.framework */; };
+		4624877E160B5E920059DA4B /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 4624877D160B5E920059DA4B /* mask.png */; };
+		4672C055160D749C000322C3 /* UIImage+myFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672C054160D749C000322C3 /* UIImage+myFilter.m */; };
+		46EFC74D160C59F500D18503 /* mask-org.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EFC74C160C59F500D18503 /* mask-org.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,10 @@
 		46248771160B2F540059DA4B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		46248773160B2F610059DA4B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		46248777160B2F7C0059DA4B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4624877D160B5E920059DA4B /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
+		4672C053160D749C000322C3 /* UIImage+myFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+myFilter.h"; path = "vImageSample/UIImage+myFilter.h"; sourceTree = "<group>"; };
+		4672C054160D749C000322C3 /* UIImage+myFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+myFilter.m"; path = "vImageSample/UIImage+myFilter.m"; sourceTree = "<group>"; };
+		46EFC74C160C59F500D18503 /* mask-org.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mask-org.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +151,8 @@
 		460C750A1609E11C00D5E049 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46EFC74C160C59F500D18503 /* mask-org.png */,
+				4624877D160B5E920059DA4B /* mask.png */,
 				460DF1BB1609E4E1004C2462 /* sample_10s.jpg */,
 				460C750B1609E11C00D5E049 /* vImageSample-Info.plist */,
 				460C750C1609E11C00D5E049 /* InfoPlist.strings */,
@@ -156,6 +165,7 @@
 		4624874B160B2B300059DA4B /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				4672C051160D744B000322C3 /* MyImageFilter */,
 				4624874C160B2BA50059DA4B /* NYXImagesKit */,
 			);
 			name = lib;
@@ -213,6 +223,15 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		4672C051160D744B000322C3 /* MyImageFilter */ = {
+			isa = PBXGroup;
+			children = (
+				4672C053160D749C000322C3 /* UIImage+myFilter.h */,
+				4672C054160D749C000322C3 /* UIImage+myFilter.m */,
+			);
+			name = MyImageFilter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,6 +286,8 @@
 				460C750E1609E11C00D5E049 /* InfoPlist.strings in Resources */,
 				460C75171609E11C00D5E049 /* MainStoryboard.storyboard in Resources */,
 				460DF1BC1609E4E1004C2462 /* sample_10s.jpg in Resources */,
+				4624877E160B5E920059DA4B /* mask.png in Resources */,
+				46EFC74D160C59F500D18503 /* mask-org.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +311,7 @@
 				4624876C160B2BA50059DA4B /* UIImage+Saving.m in Sources */,
 				4624876D160B2BA50059DA4B /* NYXProgressiveImageView.m in Sources */,
 				4624876E160B2BA50059DA4B /* NYXImagesHelper.m in Sources */,
+				4672C055160D749C000322C3 /* UIImage+myFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
