@@ -22,12 +22,16 @@
 @implementation ViewController
 @synthesize filterImage;
 
+
+static NSString * const IMAGE_NAME = @"wallpaper.jpg";
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    filterImage.image = [UIImage imageNamed:@"sample_10s.jpg"];
+    filterImage.image = [UIImage imageNamed:IMAGE_NAME];
     
     // カメラ
 //    [self showCamera];
@@ -47,6 +51,7 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+// タッチした場所を中心にぼかす
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint point = [[touches anyObject] locationInView:self.view];
@@ -54,9 +59,11 @@
     NSInteger x = point.x/filterImage.frame.size.width*filterImage.image.size.width;
     NSInteger y = point.y/filterImage.frame.size.height*filterImage.image.size.height;
     
-    filterImage.image = [[UIImage imageNamed:@"sample_10s.jpg"] blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:2 xp:x yp:y];
+    filterImage.image = [[UIImage imageNamed:IMAGE_NAME] blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:2 xp:x yp:y];
     
 }
+
+// タッチしている場所を中心にぼかす
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint point = [[touches anyObject] locationInView:self.view];
@@ -64,16 +71,17 @@
     NSInteger x = point.x/filterImage.frame.size.width*filterImage.image.size.width;
     NSInteger y = point.y/filterImage.frame.size.height*filterImage.image.size.height;
     
-    filterImage.image = [[UIImage imageNamed:@"sample_10s.jpg"] blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:2 xp:x yp:y];
+    filterImage.image = [[UIImage imageNamed:IMAGE_NAME] blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:2 xp:x yp:y];
 
 }
 
-
+// 元画像
 - (IBAction)originalAction:(id)sender {
-    filterImage.image = [UIImage imageNamed:@"sample_10s.jpg"];
+    filterImage.image = [UIImage imageNamed:IMAGE_NAME];
     
 }
 
+// 自作モノクロ
 - (IBAction)monoAction:(id)sender {
     
 //    filterImage.image = [filterImage.image grayscale];
@@ -84,6 +92,7 @@
     
 }
 
+// maskを使った無理矢理ぼかし
 - (IBAction)blurAction:(id)sender {
     
     filterImage.image = [filterImage.image maskWithImage:[UIImage imageNamed:@"mask.png"]];
@@ -95,9 +104,9 @@
     filterImage.image = [filterImage.image gaussianBlurWithBias:0];
 
     
-    UIGraphicsBeginImageContext(CGSizeMake(167, 223));
-    [[UIImage imageNamed:@"sample_10s.jpg"] drawInRect:CGRectMake(0, 0, 167, 223)];
-    [filterImage.image drawInRect:CGRectMake(0, 0, 167, 223)];
+    UIGraphicsBeginImageContext(CGSizeMake(filterImage.image.size.width, filterImage.image.size.height));
+    [[UIImage imageNamed:IMAGE_NAME] drawInRect:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height)];
+    [filterImage.image drawInRect:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height)];
     UIImage *image_c = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -105,14 +114,16 @@
     
 }
 
+// 自作モザイク
 - (IBAction)mosaicAction:(id)sender {
     
-    filterImage.image = [filterImage.image mosaic:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) size:3];
+    filterImage.image = [filterImage.image mosaic:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) size:10];
 }
 
+// 自作ぼかし
 - (IBAction)blur2Action:(id)sender {
     
-    filterImage.image = [filterImage.image blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:1 xp:60 yp:100];
+    filterImage.image = [filterImage.image blur:CGRectMake(0, 0, filterImage.image.size.width, filterImage.image.size.height) nonBlurRange:1 xp:filterImage.image.size.width/2 yp:filterImage.image.size.height/2];
 }
 
 

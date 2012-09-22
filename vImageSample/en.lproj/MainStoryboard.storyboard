@@ -93,6 +93,12 @@
                                     <action selector="blur2Action:" destination="2" eventType="touchUpInside" id="yxz-D7-Nv2"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="タッチした箇所を中心にblur2されるよ" borderStyle="roundedRect" minimumFontSize="17" id="jJ4-A7-BCL">
+                                <rect key="frame" x="29" y="420" width="263" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

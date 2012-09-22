@@ -75,8 +75,10 @@
             
             NSInteger range = sqrt(pow(abs(i-xp)/self.size.width*10,2)
                          + pow(abs(j-yp)/self.size.height*10,2));
-            if(range < nonBlurRange){
+            if(range <= nonBlurRange){
                 range = 0;
+            } else {
+                range -= nonBlurRange;
             }
             
             // 周囲の情報を取得
@@ -200,38 +202,47 @@
 	{
 		for (k = rect.origin.x; k < rect.origin.x + rect.size.width; k += size)
 		{
+            NSUInteger count = 0;
             NSUInteger rr=0, gg=0, bb=0;
             for (j = l ; j < l + size; j++)
             {
                 for (i = k; i < k + size; i++)
                 {
-                    // ピクセルのポインタを取得する
-                    UInt8 *tmp = buffer + j * bytesPerRow + i * 4;
                     
-                    // RGBの値を取得する
-                    rr += *(tmp + 0);
-                    gg += *(tmp + 2);
-                    bb += *(tmp + 1);
-                    
+                    if(rect.origin.y <= j && j < rect.origin.y + rect.size.height
+                       && rect.origin.x <= i && i < rect.origin.x + rect.size.width){
+                        
+                        // ピクセルのポインタを取得する
+                        UInt8 *tmp = buffer + j * bytesPerRow + i * 4;
+                        
+                        // RGBの値を取得する
+                        rr += *(tmp + 0);
+                        gg += *(tmp + 2);
+                        bb += *(tmp + 1);
+                        
+                        count++;
+                    }
                     
                 }
             }
-            NSUInteger count = (i-k) * (j-l);
             
             for (j = l ; j < l + size; j++)
             {
                 for (i = k; i < k + size; i++)
                 {
-                    // ピクセルのポインタを取得する
-                    UInt8* tmp = buffer + j * bytesPerRow + i * 4;
-                    
-                    // RGBの値を取得する
-                    
-                    *(tmp + 0) = rr/count;
-                    *(tmp + 2) = gg/count;
-                    *(tmp + 1) = bb/count;
-                    
+                    if(rect.origin.y <= j && j < rect.origin.y + rect.size.height
+                       && rect.origin.x <= i && i < rect.origin.x + rect.size.width){
+                        // ピクセルのポインタを取得する
+                        UInt8* tmp = buffer + j * bytesPerRow + i * 4;
+                        
+                        // RGBの値を取得する
+                        
+                        *(tmp + 0) = rr/count;
+                        *(tmp + 2) = gg/count;
+                        *(tmp + 1) = bb/count;
+                    }
                 }
+                
             }
         }
     }
