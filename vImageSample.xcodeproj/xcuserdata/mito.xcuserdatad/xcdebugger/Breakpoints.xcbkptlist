@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "vImageSample/UIImage+myFilter.m"
-         timestampString = "369998187.447003"
+         timestampString = "370003765.402639"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "330"
-         endingLineNumber = "330"
+         startingLineNumber = "444"
+         endingLineNumber = "444"
          landmarkName = "-gray:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "vImageSample/UIImage+myFilter.m"
-         timestampString = "369993676.287866"
+         timestampString = "370003765.402639"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-blur:nonBlurRange:xp:yp:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,24 +34,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "vImageSample/ViewController.m"
-         timestampString = "369997843.179163"
+         timestampString = "370354328.037755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
-         landmarkName = "-touchesBegan:withEvent:"
-         landmarkType = "5">
+         startingLineNumber = "392"
+         endingLineNumber = "392"
+         landmarkName = "@implementation ViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "vImageSample/UIImage+myFilter.m"
-         timestampString = "369996517.965221"
+         timestampString = "370003765.402639"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "16"
-         endingLineNumber = "16"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
          landmarkName = "-blur:nonBlurRange:xp:yp:"
          landmarkType = "5">
       </FileBreakpoint>

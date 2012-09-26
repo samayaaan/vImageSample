@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460A46921613127200416922 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 460A46911613127200416922 /* heart.png */; };
+		460A4695161331B900416922 /* hito.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 460A4694161331B900416922 /* hito.jpg */; };
 		460C75041609E11C00D5E049 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75031609E11C00D5E049 /* UIKit.framework */; };
 		460C75061609E11C00D5E049 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75051609E11C00D5E049 /* Foundation.framework */; };
 		460C75081609E11C00D5E049 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75071609E11C00D5E049 /* CoreGraphics.framework */; };
@@ -33,11 +35,14 @@
 		46248778160B2F7C0059DA4B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46248777160B2F7C0059DA4B /* MobileCoreServices.framework */; };
 		4624877E160B5E920059DA4B /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 4624877D160B5E920059DA4B /* mask.png */; };
 		4630442E160DB6FE0044018D /* wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4630442D160DB6FE0044018D /* wallpaper.jpg */; };
+		466DB12B1612E680006132DD /* ImageFilterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 466DB12A1612E680006132DD /* ImageFilterUtil.m */; };
 		4672C055160D749C000322C3 /* UIImage+myFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672C054160D749C000322C3 /* UIImage+myFilter.m */; };
 		46EFC74D160C59F500D18503 /* mask-org.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EFC74C160C59F500D18503 /* mask-org.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		460A46911613127200416922 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		460A4694161331B900416922 /* hito.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hito.jpg; sourceTree = "<group>"; };
 		460C74FF1609E11C00D5E049 /* vImageSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vImageSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		460C75031609E11C00D5E049 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		460C75051609E11C00D5E049 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -80,6 +85,8 @@
 		46248777160B2F7C0059DA4B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4624877D160B5E920059DA4B /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		4630442D160DB6FE0044018D /* wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper.jpg; sourceTree = "<group>"; };
+		466DB1291612E680006132DD /* ImageFilterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageFilterUtil.h; path = vImageSample/ImageFilterUtil.h; sourceTree = "<group>"; };
+		466DB12A1612E680006132DD /* ImageFilterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageFilterUtil.m; path = vImageSample/ImageFilterUtil.m; sourceTree = "<group>"; };
 		4672C053160D749C000322C3 /* UIImage+myFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+myFilter.h"; path = "vImageSample/UIImage+myFilter.h"; sourceTree = "<group>"; };
 		4672C054160D749C000322C3 /* UIImage+myFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+myFilter.m"; path = "vImageSample/UIImage+myFilter.m"; sourceTree = "<group>"; };
 		46EFC74C160C59F500D18503 /* mask-org.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mask-org.png"; sourceTree = "<group>"; };
@@ -153,6 +160,8 @@
 		460C750A1609E11C00D5E049 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				460A4694161331B900416922 /* hito.jpg */,
+				460A46911613127200416922 /* heart.png */,
 				4630442D160DB6FE0044018D /* wallpaper.jpg */,
 				46EFC74C160C59F500D18503 /* mask-org.png */,
 				4624877D160B5E920059DA4B /* mask.png */,
@@ -231,6 +240,8 @@
 			children = (
 				4672C053160D749C000322C3 /* UIImage+myFilter.h */,
 				4672C054160D749C000322C3 /* UIImage+myFilter.m */,
+				466DB1291612E680006132DD /* ImageFilterUtil.h */,
+				466DB12A1612E680006132DD /* ImageFilterUtil.m */,
 			);
 			name = MyImageFilter;
 			sourceTree = "<group>";
@@ -292,6 +303,8 @@
 				4624877E160B5E920059DA4B /* mask.png in Resources */,
 				46EFC74D160C59F500D18503 /* mask-org.png in Resources */,
 				4630442E160DB6FE0044018D /* wallpaper.jpg in Resources */,
+				460A46921613127200416922 /* heart.png in Resources */,
+				460A4695161331B900416922 /* hito.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +329,7 @@
 				4624876D160B2BA50059DA4B /* NYXProgressiveImageView.m in Sources */,
 				4624876E160B2BA50059DA4B /* NYXImagesHelper.m in Sources */,
 				4672C055160D749C000322C3 /* UIImage+myFilter.m in Sources */,
+				466DB12B1612E680006132DD /* ImageFilterUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

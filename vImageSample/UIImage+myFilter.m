@@ -9,6 +9,120 @@
 #import "UIImage+myFilter.h"
 
 @implementation UIImage (Effect)
+// ぼかし
+-(UIImage*)fishEye:(CGRect)rect {
+	// CGImageを取得する
+	CGImageRef cgImage;
+	cgImage = self.CGImage;
+    
+	// 画像情報を取得する
+	size_t width;
+	size_t height;
+	size_t bitsPerComponent;
+	size_t bitsPerPixel;
+	size_t bytesPerRow;
+	CGColorSpaceRef colorSpace;
+	CGBitmapInfo bitmapInfo;
+	bool shouldInterpolate;
+	CGColorRenderingIntent intent;
+	width = CGImageGetWidth(cgImage);
+	height = CGImageGetHeight(cgImage);
+	bitsPerComponent = CGImageGetBitsPerComponent(cgImage);
+	bitsPerPixel = CGImageGetBitsPerPixel(cgImage);
+	bytesPerRow = CGImageGetBytesPerRow(cgImage);
+	colorSpace = CGImageGetColorSpace(cgImage);
+	bitmapInfo = CGImageGetBitmapInfo(cgImage);
+	shouldInterpolate = CGImageGetShouldInterpolate(cgImage);
+	intent = CGImageGetRenderingIntent(cgImage);
+    
+	// データプロバイダを取得する
+	CGDataProviderRef dataProvider = CGImageGetDataProvider(cgImage);
+    
+	if (rect.size.width + rect.origin.x  > width) {
+		rect.size.width = width - rect.origin.x;
+	}
+	if (rect.size.height + rect.origin.y > height) {
+		rect.size.height = height - rect.origin.y;
+	}
+    
+    
+	// ビットマップデータを取得する
+	CFDataRef data = CGDataProviderCopyData(dataProvider);
+	UInt8* buffer = (UInt8*)CFDataGetBytePtr(data);
+    
+	// ビットマップに効果を与える(ここしか違わないのでまとめるべき)
+    
+	NSInteger i, j;
+    int r = 300;
+    int d = 5;
+    int w = rect.size.width;
+    int h = rect.size.height;
+    UInt8 *tempImage[h][w][3];
+	for (j = rect.origin.y ; j < rect.origin.y + rect.size.height; j++)
+	{
+		for (i = rect.origin.x; i < rect.origin.x + rect.size.width; i++)
+		{
+            int x = i;
+            int y = j;
+            float rp = sqrt(pow(d, 2) + pow(x-w/2, 2) + pow(y-h/2, 2));
+            int x2 = rp * (x+w/2) / r + w/2;
+            int y2 = rp * (y+h/2) / r + h/2;
+			// ピクセルのポインタを取得する
+			UInt8* tmp = buffer + j * bytesPerRow + i * 4;
+            
+			// RGBの値を取得する
+            if(j==0){
+                NSLog(@"x2:%d", x2);
+                NSLog(@"y2:%d", y2);
+            }
+            if(y2 < h && x2 < w){
+			tempImage[y2][x2][0] = *(tmp + 0);
+			tempImage[y2][x2][2] = *(tmp + 2);
+			tempImage[y2][x2][1] = *(tmp + 1);
+            }
+		}
+    }
+    for (j = rect.origin.y ; j < rect.origin.y + rect.size.height; j++)
+	{
+		for (i = rect.origin.x; i < rect.origin.x + rect.size.width; i++)
+		{
+			// ピクセルのポインタを取得する
+			UInt8* tmp = buffer + j * bytesPerRow + i * 4;
+            
+			// RGBの値を取得する
+			*(tmp + 0) = tempImage[j][i][0] == nil ? *(tmp + 0) : tempImage[j][i][0];
+			*(tmp + 2) = tempImage[j][i][2] == nil ? *(tmp + 2) : tempImage[j][i][2];
+			*(tmp + 1) = tempImage[j][i][1] == nil ? *(tmp + 1) : tempImage[j][i][1];
+            
+		}
+    }
+    
+	// 効果を与えたデータを作成する
+	CFDataRef effectedData;
+	effectedData = CFDataCreate(NULL, buffer, CFDataGetLength(data));
+    
+	// 効果を与えたデータプロバイダを作成する
+	CGDataProviderRef effectedDataProvider;
+	effectedDataProvider = CGDataProviderCreateWithCFData(effectedData);
+    
+	// 画像を作成する
+	CGImageRef effectedCgImage = CGImageCreate(
+                                               width, height,
+                                               bitsPerComponent, bitsPerPixel, bytesPerRow,
+                                               colorSpace, bitmapInfo, effectedDataProvider,
+                                               NULL, shouldInterpolate, intent);
+    
+    UIImage* effectedImage = [UIImage imageWithCGImage:effectedCgImage];
+    
+    
+	// 作成したデータを解放する
+	CGImageRelease(effectedCgImage);
+	CFRelease(effectedDataProvider);
+	CFRelease(effectedData);
+	CFRelease(data);
+    
+	return effectedImage;
+}
 
 // ぼかし
 -(UIImage*)blur:(CGRect)rect nonBlurRange:(NSInteger)nonBlurRange xp:(NSUInteger)xp yp:(NSInteger)yp {

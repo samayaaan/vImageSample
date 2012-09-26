@@ -10,7 +10,7 @@
 
 @interface UIImage (effect)
 
-
+-(UIImage*)fishEye:(CGRect)rect;
 -(UIImage*)blur:(CGRect)rect nonBlurRange:(NSInteger)nonBlurRange xp:(NSUInteger)xp yp:(NSInteger)yp ;
 -(UIImage*)mosaic:(CGRect)rect size:(NSUInteger)size;
 -(UIImage*)gray:(CGRect)rect;
